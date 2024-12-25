@@ -62,18 +62,3 @@ Visualzation of spatial attention weight map:
 
 Visualzation of scale attention weight map:
 ![refinement](./pictures/scale_atten_weight.png)
-## Citation
-If you find our work is helpful for your research, please consider to cite:
-```
-@article{gu2020net,
-  title={CA-Net: Comprehensive Attention Convolutional Neural Networks for Explainable Medical Image Segmentation},
-  author={Gu, Ran and Wang, Guotai and Song, Tao and Huang, Rui and Aertsen, Michael and Deprest, Jan and Ourselin, S{\'e}bastien and Vercauteren, Tom and Zhang, Shaoting},
-  journal={IEEE Transactions on Medical Imaging},
-  year={2020},
-  publisher={IEEE}
-}
-```
-## Acknowledgement
-Part of the code is revised from [Attention-Gate-Networks][AG].
-
-[AG]:https://github.com/ozan-oktay/Attention-Gated-Networks
