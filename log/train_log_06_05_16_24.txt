@@ -1,0 +1,12 @@
+2021-06-05 16:24:43 start train.
+2021-06-05 16:43:09 EPOCH 0 ,g_loss:-31.873321533203125 d_loss:-78.0619125366211 p_loss:0.11755692213773727 gp_loss:28.696081161499023 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 17:01:55 EPOCH 1 ,g_loss:-34.477298736572266 d_loss:-30.21476173400879 p_loss:0.05029904097318649 gp_loss:9.220190048217773 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 17:20:25 EPOCH 2 ,g_loss:-18.963748931884766 d_loss:-8.632586479187012 p_loss:0.03026488609611988 gp_loss:1.7764235734939575 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 17:38:55 EPOCH 3 ,g_loss:-23.48893928527832 d_loss:-6.913650035858154 p_loss:0.023413728922605515 gp_loss:1.2924613952636719 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 17:57:27 EPOCH 4 ,g_loss:-34.25872802734375 d_loss:-5.864057540893555 p_loss:0.019440263509750366 gp_loss:1.0133066177368164 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 18:15:57 EPOCH 5 ,g_loss:-38.598350524902344 d_loss:-5.378753185272217 p_loss:0.017922941595315933 gp_loss:0.8868210911750793 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 18:34:42 EPOCH 6 ,g_loss:-38.004093170166016 d_loss:-5.078564167022705 p_loss:0.01783665083348751 gp_loss:0.8171665072441101 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 18:53:12 EPOCH 7 ,g_loss:-45.14543533325195 d_loss:-4.855632305145264 p_loss:0.01787753775715828 gp_loss:0.7674388289451599 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 19:11:41 EPOCH 8 ,g_loss:-49.34362030029297 d_loss:-4.616055488586426 p_loss:0.01755709946155548 gp_loss:0.7084749937057495 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 19:30:11 EPOCH 9 ,g_loss:-48.21393966674805 d_loss:-4.35290002822876 p_loss:0.016747180372476578 gp_loss:0.6492933034896851 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)
+2021-06-05 19:48:40 EPOCH 10 ,g_loss:-44.654266357421875 d_loss:-4.032974720001221 p_loss:0.01583370566368103 gp_loss:0.5777033567428589 gamma:tensor([1.], device='cuda:0', grad_fn=<CopyBackwards>)

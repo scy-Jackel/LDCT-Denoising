@@ -1,0 +1,256 @@
+Network Architecture of Model AttU_Net:
+Comprehensive_Atten_Unet(
+  (conv1): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+  )
+  (maxpool1): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv2): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+  )
+  (maxpool2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv3): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+  )
+  (maxpool3): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (conv4): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+  )
+  (maxpool4): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+  (center): conv_block(
+    (conv): Sequential(
+      (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+  )
+  (attentionblock2): MultiAttentionBlock(
+    (gate_block_1): GridAttentionBlock2D(
+      (W): Sequential(
+        (0): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (theta): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      (phi): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (psi): Conv2d(32, 1, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (gate_block_2): GridAttentionBlock2D(
+      (W): Sequential(
+        (0): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (theta): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1))
+      (phi): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (psi): Conv2d(32, 1, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (combine_gates): Sequential(
+      (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (attentionblock3): MultiAttentionBlock(
+    (gate_block_1): GridAttentionBlock2D(
+      (W): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (theta): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      (phi): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (psi): Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (gate_block_2): GridAttentionBlock2D(
+      (W): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (theta): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))
+      (phi): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (psi): Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (combine_gates): Sequential(
+      (0): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (nonlocal4_2): NONLocalBlock2D(
+    (g): Sequential(
+      (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+      (1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+    (W): Sequential(
+      (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (theta): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+    (phi): Sequential(
+      (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+      (1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    )
+  )
+  (up_concat4): UpCat(
+    (up): ConvTranspose2d(256, 128, kernel_size=(2, 2), stride=(2, 2))
+  )
+  (up_concat3): UpCat(
+    (up): ConvTranspose2d(128, 64, kernel_size=(2, 2), stride=(2, 2))
+  )
+  (up_concat2): UpCat(
+    (up): ConvTranspose2d(64, 32, kernel_size=(2, 2), stride=(2, 2))
+  )
+  (up_concat1): UpCat(
+    (up): ConvTranspose2d(32, 16, kernel_size=(2, 2), stride=(2, 2))
+  )
+  (up4): SE_Conv_Block(
+    (conv1): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (globalAvgPool): AvgPool2d(kernel_size=(28, 37), stride=1, padding=0)
+    (globalMaxPool): MaxPool2d(kernel_size=(28, 37), stride=1, padding=0, dilation=1, ceil_mode=False)
+    (fc1): Linear(in_features=256, out_features=64, bias=True)
+    (fc2): Linear(in_features=64, out_features=256, bias=True)
+    (sigmoid): Sigmoid()
+    (downchannel): Sequential(
+      (0): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (up3): SE_Conv_Block(
+    (conv1): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (globalAvgPool): AvgPool2d(kernel_size=(56, 75), stride=1, padding=0)
+    (globalMaxPool): MaxPool2d(kernel_size=(56, 75), stride=1, padding=0, dilation=1, ceil_mode=False)
+    (fc1): Linear(in_features=128, out_features=32, bias=True)
+    (fc2): Linear(in_features=32, out_features=128, bias=True)
+    (sigmoid): Sigmoid()
+    (downchannel): Sequential(
+      (0): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (up2): SE_Conv_Block(
+    (conv1): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (globalAvgPool): AvgPool2d(kernel_size=(112, 150), stride=1, padding=0)
+    (globalMaxPool): MaxPool2d(kernel_size=(112, 150), stride=1, padding=0, dilation=1, ceil_mode=False)
+    (fc1): Linear(in_features=64, out_features=16, bias=True)
+    (fc2): Linear(in_features=16, out_features=64, bias=True)
+    (sigmoid): Sigmoid()
+    (downchannel): Sequential(
+      (0): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (up1): SE_Conv_Block(
+    (conv1): Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (globalAvgPool): AvgPool2d(kernel_size=(224, 300), stride=1, padding=0)
+    (globalMaxPool): MaxPool2d(kernel_size=(224, 300), stride=1, padding=0, dilation=1, ceil_mode=False)
+    (fc1): Linear(in_features=32, out_features=8, bias=True)
+    (fc2): Linear(in_features=8, out_features=32, bias=True)
+    (sigmoid): Sigmoid()
+    (downchannel): Sequential(
+      (0): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (dsv4): UnetDsv3(
+    (dsv): Sequential(
+      (0): Conv2d(128, 4, kernel_size=(1, 1), stride=(1, 1))
+      (1): Upsample(size=(224, 300), mode=bilinear)
+    )
+  )
+  (dsv3): UnetDsv3(
+    (dsv): Sequential(
+      (0): Conv2d(64, 4, kernel_size=(1, 1), stride=(1, 1))
+      (1): Upsample(size=(224, 300), mode=bilinear)
+    )
+  )
+  (dsv2): UnetDsv3(
+    (dsv): Sequential(
+      (0): Conv2d(32, 4, kernel_size=(1, 1), stride=(1, 1))
+      (1): Upsample(size=(224, 300), mode=bilinear)
+    )
+  )
+  (dsv1): Conv2d(16, 4, kernel_size=(1, 1), stride=(1, 1))
+  (scale_att): scale_atten_convblock(
+    (relu): ReLU(inplace=True)
+    (conv3): Conv2d(16, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn3): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (cbam): Scale_atten_block(
+      (ChannelGate): ChannelGate(
+        (mlp): Sequential(
+          (0): Flatten()
+          (1): Linear(in_features=16, out_features=4, bias=True)
+          (2): ReLU()
+          (3): Linear(in_features=4, out_features=16, bias=True)
+        )
+      )
+      (SpatialGate): SpatialAtten(
+        (conv1): BasicConv(
+          (conv): Conv2d(16, 4, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(4, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU()
+        )
+        (conv2): BasicConv(
+          (conv): Conv2d(4, 4, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (relu): ReLU()
+        )
+      )
+    )
+  )
+  (final): Sequential(
+    (0): Conv2d(4, 2, kernel_size=(1, 1), stride=(1, 1))
+    (1): Softmax2d()
+  )
+)
+Number of trainable parameters 2785610 in Model Comp_Atten_Unet
